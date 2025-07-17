@@ -123,11 +123,11 @@ const ActivityLogPanel = ({ token, onClose }) => {
                   <div className="log-message">
                   <strong>{log.user?.username || "Unknown User"}</strong> {(() => {
                     if (log.action === "ASSIGN") {
-                      return <>assigned task <em>"{log.task?.title || "Unknown Task"}"</em> to <strong>{log.assignedTo?.username}</strong></>;
+                      return <>assigned task <em>"{log.task?.title || "Unknown Task"}"</em> to <strong>{log.assignedTo?.username || "None"}</strong></>;
                     } else if (log.action === "STATUS_CHANGE") {
                       return <>{log.message}</>;
                     } else if(log.action === "CREATE"){  
-                      return <>created task <em>"{log.task?.title || "Unknown Task"}"</em>assigned to <strong>{log.assignedTo?.username}</strong></>;
+                      return <>created task <em>"{log.task?.title || "Unknown Task"}"</em>assigned to <strong>{log.assignedTo?.username || "None"}</strong></>;
                     } else if(log.action === "UPDATE"){
                       return <>updated task <em>"{log.task?.title || "Unknown Task"}"</em></>;
                     } else if(log.action === "DELETE"){
