@@ -283,10 +283,13 @@
   }
 
   .task-actions {
-    position: static;
-    margin-top: 1rem;
-    justify-content: center;
-    background: linear-gradient(135deg, #3d4450 0%, #2a2f3a 100%);
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    margin-top: 0;
+    justify-content: flex-end;
+    padding: 0.4rem;
+    background: linear-gradient(135deg, rgba(36, 41, 51, 0.95) 0%, rgba(26, 31, 41, 0.95) 100%);
   }
 
   .priority-indicator {
