@@ -30,7 +30,7 @@ const EditTaskModal = ({ task, token, onClose, onConflict, lastUpdatedAt }) => {
 
     try {
       // Fetch the latest task from the backend
-      const latestRes = await fetch(`http://localhost:5000/tasks/${task._id}`, {
+      const latestRes = await fetch(`https://kanban-board-fc6s.onrender.com/tasks/${task._id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -60,7 +60,7 @@ const EditTaskModal = ({ task, token, onClose, onConflict, lastUpdatedAt }) => {
       }
 
       // Proceed with update if no conflict
-      const response = await fetch(`http://localhost:5000/tasks/update-task/${task._id}`, {
+      const response = await fetch(`https://kanban-board-fc6s.onrender.com/tasks/update-task/${task._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

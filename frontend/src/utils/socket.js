@@ -7,7 +7,7 @@ export const connectSocket = (token) => {
     socket.disconnect()
   }
 
-  socket = io("http://localhost:5000", {
+  socket = io("https://kanban-board-fc6s.onrender.com", {
     auth: {
       token: token,
     },

@@ -31,7 +31,7 @@ const BoardPage = ({ user, token, onLogout }) => {
   // Fetch tasks from API
   const fetchTasks = useCallback(async () => {
     try {
-      const response = await fetch("http://localhost:5000/tasks/", {
+      const response = await fetch("https://kanban-board-fc6s.onrender.com/tasks/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -116,7 +116,7 @@ const BoardPage = ({ user, token, onLogout }) => {
     setTasks((prev) => prev.map((task) => (task._id === draggedTask._id ? updatedTask : task)))
 
     try {
-      const response = await fetch(`http://localhost:5000/tasks/update-task/${draggedTask._id}`, {
+      const response = await fetch(`https://kanban-board-fc6s.onrender.com/tasks/update-task/${draggedTask._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -155,7 +155,7 @@ const BoardPage = ({ user, token, onLogout }) => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/tasks/delete-task/${task_id}`, {
+      const response = await fetch(`https://kanban-board-fc6s.onrender.com/tasks/delete-task/${task_id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -172,7 +172,7 @@ const BoardPage = ({ user, token, onLogout }) => {
 
   const handleSmartAssign = async (task_id) => {
     try {
-      const response = await fetch(`http://localhost:5000/tasks/smart-assign/${task_id}`, {
+      const response = await fetch(`https://kanban-board-fc6s.onrender.com/tasks/smart-assign/${task_id}`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -190,7 +190,7 @@ const BoardPage = ({ user, token, onLogout }) => {
   const handleConflictResolve = async (resolution) => {
     if (resolution.action === "overwrite") {
       try {
-        const response = await fetch(`http://localhost:5000/tasks/update-task/${conflictData.task_id}`, {
+        const response = await fetch(`https://kanban-board-fc6s.onrender.com/tasks/update-task/${conflictData.task_id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -222,7 +222,7 @@ const BoardPage = ({ user, token, onLogout }) => {
   const handleMergeSubmit = async (mergedFields) => {
     if (!mergeData) return
     try {
-      const response = await fetch(`http://localhost:5000/tasks/update-task/${conflictData?.task_id || mergeData.latestVersion._id}`, {
+      const response = await fetch(`https://kanban-board-fc6s.onrender.com/tasks/update-task/${conflictData?.task_id || mergeData.latestVersion._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

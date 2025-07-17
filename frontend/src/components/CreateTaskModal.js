@@ -56,7 +56,7 @@ const CreateTaskModal = ({ token, onClose, existingTasks }) => {
     setLoading(true)
 
     try {
-      const response = await fetch("http://localhost:5000/tasks/create-task", {
+      const response = await fetch("https://kanban-board-fc6s.onrender.com/tasks/create-task", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
