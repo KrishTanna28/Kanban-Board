@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import TaskCard from "./TaskCard"
+import EditTaskModal from "./EditTaskModal"
 import ActivityLogPanel from "./ActivityLogPanel"
 import ConflictModal from "./ConflictModal"
 import CreateTaskModal from "./CreateTaskModal"
@@ -25,6 +26,7 @@ const BoardPage = ({ user, token, onLogout }) => {
   const [error, setError] = useState("")
   const [editingTaskId, setEditingTaskId] = useState(null)
   const [mergeData, setMergeData] = useState(null)
+  const [lastEditUpdatedAt, setLastEditUpdatedAt] = useState(null)
 
   // Fetch tasks from API
   const fetchTasks = useCallback(async () => {
@@ -312,7 +314,10 @@ const BoardPage = ({ user, token, onLogout }) => {
                     token={token}
                     onEditConflict={setConflictData}
                     isEditing={editingTaskId === task._id}
-                    onEditOpen={() => setEditingTaskId(task._id)}
+                    onEditOpen={() => {
+                      setEditingTaskId(task._id)
+                      setLastEditUpdatedAt(task.updatedAt)
+                    }}
                     onEditClose={() => setEditingTaskId(null)}
                   />
                 ))}
@@ -328,6 +333,16 @@ const BoardPage = ({ user, token, onLogout }) => {
       {/* Modals */}
       {showCreateModal && (
         <CreateTaskModal token={token} onClose={() => setShowCreateModal(false)} existingTasks={tasks} />
+      )}
+
+      {editingTaskId && (
+        <EditTaskModal
+          task={tasks.find((t) => t._id === editingTaskId)}
+          token={token}
+          onClose={() => setEditingTaskId(null)}
+          onConflict={setConflictData}
+          lastUpdatedAt={lastEditUpdatedAt}
+        />
       )}
 
       {conflictData && <ConflictModal conflictData={conflictData} onResolve={handleConflictResolve} onMerge={handleMergeOpen} />}

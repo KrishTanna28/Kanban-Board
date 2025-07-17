@@ -77,8 +77,7 @@ const TaskCard = ({ task, onDragStart, onDelete, onSmartAssign, currentUser, tok
           </div>
         )}
       </div>
-
-      {isEditing && <EditTaskModal task={task} token={token} onClose={onEditClose} onConflict={onEditConflict} lastUpdatedAt={lastUpdatedAt.current} />}
+      {/* EditTaskModal removed from here. Now rendered at BoardPage.js top level. */}
     </>
   )
 }
