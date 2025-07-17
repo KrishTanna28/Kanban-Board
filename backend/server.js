@@ -14,10 +14,6 @@ app.use(cors({
   origin: 'https://kanban-board-two-lac.vercel.app',
   credentials: true
 }));
-app.options('*', cors({
-  origin: 'https://kanban-board-two-lac.vercel.app',
-  credentials: true
-}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT;
