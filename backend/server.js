@@ -9,18 +9,10 @@ import taskRoutes from "./routes/taskRoutes.js";
 
 dotenv.config();
 
-const allowedOrigins = ['https://kanban-board-two-lac.vercel.app'];
-
 const app = express();
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true, 
+  origin: 'https://kanban-board-two-lac.vercel.app',
+  credentials: true
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
