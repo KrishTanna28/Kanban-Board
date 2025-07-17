@@ -1,8 +1,42 @@
 # Kanban Board
 
-A full-stack collaborative Kanban Board application with real-time updates, user authentication, activity logging, and conflict resolution. Built with Node.js/Express (backend) and React (frontend).
+A full-stack collaborative Kanban Board application featuring smart task assignment, real-time updates, and sophisticated conflict resolution. Built with Node.js/Express (backend) and React (frontend).
 
----
+## Project Overview
+
+This Kanban Board is a modern task management system designed for real-time team collaboration. It combines intelligent task assignment algorithms with robust conflict resolution mechanisms to provide a seamless project management experience.
+
+Key Highlights:
+- Smart task assignment based on workload analysis and performance metrics
+- Real-time collaboration with WebSocket integration
+- Sophisticated conflict detection and resolution
+- Comprehensive activity logging
+- Mobile-responsive design
+
+Live Demo:
+- **Application**: [Kanban Board App](https://kanban-board-fc6s.onrender.com)
+- **Demo Video**: [Watch Demo](your-demo-video-link-here)
+
+## Tech Stack
+
+### Frontend
+- React.js for UI components
+- Modern JavaScript (ES6+)
+- CSS3 with custom animations
+- Socket.io-client for real-time updates
+- Responsive design with CSS Grid/Flexbox
+
+### Backend
+- Node.js runtime environment
+- Express.js framework
+- MongoDB with Mongoose ODM
+- Socket.io for WebSocket connections
+- JWT for authentication
+
+### DevOps & Deployment
+- Git version control
+- Render for hosting
+- MongoDB Atlas cloud database
 
 ## Features
 
@@ -96,13 +130,70 @@ npm start
 
 ---
 
-## Usage
-- Register a new user or log in.
-- Create, edit, and drag tasks between columns.
-- Assign tasks to users.
-- See real-time updates as other users interact.
-- View the activity log for all actions.
-- If two users edit the same task, a conflict modal will appear to resolve changes.
+## Smart Assignment System
+
+The smart task assignment system uses a sophisticated algorithm that considers multiple factors:
+
+### Workload Analysis
+- Current number of assigned tasks per user
+- Task completion rate and efficiency
+- Priority distribution across team members
+- Historical performance patterns
+
+### Performance Metrics
+- Average task completion time
+- Success rate in meeting deadlines
+- Task complexity handling capability
+- Domain expertise and task type matching
+
+### Availability Factors
+- Current active status
+- Time zone and working hours
+- Recent activity patterns
+- Team balance considerations
+
+## Conflict Handling System
+
+The conflict resolution system manages concurrent updates through a sophisticated merge strategy:
+
+### Detection Mechanism
+- Version tracking for each task
+- Timestamp-based change detection
+- Field-level difference analysis
+- Change vector tracking
+
+### Resolution Strategy
+- Automatic merging of non-conflicting changes
+- Interactive resolution for conflicting fields
+- Preservation of all user intentions
+- Change history maintenance
+
+### User Interface
+- Real-time conflict notifications
+- Side-by-side comparison view
+- Smart merge suggestions
+- Audit trail of resolution decisions
+
+## Usage Guide
+
+### Getting Started
+1. Register a new account or log in
+2. Navigate the Kanban board (Todo, In Progress, Done)
+3. Create your first task with priority and description
+4. Assign tasks manually or use Smart Assign
+5. Monitor the Activity Log for team updates
+
+### Task Management
+- Drag and drop tasks between status columns
+- Edit task details with real-time updates
+- Use Smart Assign for optimal task distribution
+- Handle conflicts through the merge interface
+
+### Collaboration Features
+- Real-time updates across all connected clients
+- Activity log showing team actions
+- Smart notifications for important changes
+- Conflict resolution for concurrent edits
 
 ---
 

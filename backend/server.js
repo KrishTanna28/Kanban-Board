@@ -14,6 +14,7 @@ app.use(cors({
   origin: 'https://kanban-board-two-lac.vercel.app',
   credentials: true
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT;
@@ -22,11 +23,6 @@ connectDB();
 
 app.use('/auth', authRoutes);
 app.use('/tasks', taskRoutes);
-
-app.use((req, res, next) => {
-  console.log('Incoming request:', req.method, req.url);
-  next();
-});
 
 const server  = http.createServer(app);
 
