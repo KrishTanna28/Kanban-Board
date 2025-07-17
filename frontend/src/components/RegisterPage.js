@@ -27,6 +27,7 @@ const RegisterPage = ({ onRegister, onSwitchToLogin }) => {
     try {
       const response = await fetch("https://kanban-board-fc6s.onrender.com/auth/register", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },

@@ -13,6 +13,7 @@ const ActivityLogPanel = ({ token, onClose }) => {
     const fetchLogs = async () => {
       try {
         const response = await fetch("https://kanban-board-fc6s.onrender.com/tasks/logs/recent", {
+          credentials: "include",
           headers: {
             Authorization: `Bearer ${token}`,
           },

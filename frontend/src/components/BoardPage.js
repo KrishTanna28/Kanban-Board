@@ -32,6 +32,7 @@ const BoardPage = ({ user, token, onLogout }) => {
   const fetchTasks = useCallback(async () => {
     try {
       const response = await fetch("https://kanban-board-fc6s.onrender.com/tasks/", {
+        credentials: "include",
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -118,6 +119,7 @@ const BoardPage = ({ user, token, onLogout }) => {
     try {
       const response = await fetch(`https://kanban-board-fc6s.onrender.com/tasks/update-task/${draggedTask._id}`, {
         method: "PUT",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -157,6 +159,7 @@ const BoardPage = ({ user, token, onLogout }) => {
     try {
       const response = await fetch(`https://kanban-board-fc6s.onrender.com/tasks/delete-task/${task_id}`, {
         method: "DELETE",
+        credentials: "include",
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -174,6 +177,7 @@ const BoardPage = ({ user, token, onLogout }) => {
     try {
       const response = await fetch(`https://kanban-board-fc6s.onrender.com/tasks/smart-assign/${task_id}`, {
         method: "POST",
+        credentials: "include",
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -192,6 +196,7 @@ const BoardPage = ({ user, token, onLogout }) => {
       try {
         const response = await fetch(`https://kanban-board-fc6s.onrender.com/tasks/update-task/${conflictData.task_id}`, {
           method: "PUT",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -224,6 +229,7 @@ const BoardPage = ({ user, token, onLogout }) => {
     try {
       const response = await fetch(`https://kanban-board-fc6s.onrender.com/tasks/update-task/${conflictData?.task_id || mergeData.latestVersion._id}`, {
         method: "PUT",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,

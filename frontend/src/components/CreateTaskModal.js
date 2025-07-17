@@ -58,6 +58,7 @@ const CreateTaskModal = ({ token, onClose, existingTasks }) => {
     try {
       const response = await fetch("https://kanban-board-fc6s.onrender.com/tasks/create-task", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
