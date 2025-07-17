@@ -1,0 +1,73 @@
+.merge-comparison-row {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.merge-panel {
+  flex: 1;
+  margin: 0 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 18px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.merge-panel.merged {
+  background: #fffbe6;
+  border: 2px solid #ffe58f;
+  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.08);
+}
+
+.merge-field-label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #6c757d;
+  font-size: 0.85rem;
+}
+
+.merge-field-value {
+  background: #fff;
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  border: 1px solid #e2e8f0;
+  min-height: 32px;
+  word-break: break-word;
+}
+
+.merge-copy-btn {
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  margin-left: 6px;
+  margin-bottom: 6px;
+  background: #e3f2fd;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.merge-input {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+.merge-textarea {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  min-height: 48px;
+  resize: vertical;
+}

@@ -1,0 +1,442 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+  animation: fadeInOverlay 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+  }
+}
+
+.modal {
+  background: linear-gradient(135deg, #242933 0%, #1e242e 100%);
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 550px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideInModal 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.modal.merge-modal {
+  max-width: 550px;
+}
+
+.modal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0078f2 0%, #f88c00 100%);
+}
+
+@keyframes slideInModal {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-header {
+  padding: 2rem 2rem 1rem;
+  border-bottom: 1px solid #3d4450;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+}
+
+.modal-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 0%, #a7b2c1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.close-btn {
+  background: linear-gradient(135deg, #3d4450 0%, #2a2f3a 100%);
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: #a7b2c1;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn:hover {
+  background: linear-gradient(135deg, #ff4757 0%, #c44569 100%);
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 71, 87, 0.3);
+}
+
+.modal-form {
+  padding: 2rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding-top: 1.5rem;
+  border-top: 1px solid #3d4450;
+  margin-top: 1.5rem;
+}
+
+/* Form Overrides for Modals */
+.modal-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.modal-form .form-input,
+.modal-form .form-textarea,
+.modal-form .form-select {
+  background: #1a1f29;
+  border: 2px solid #3d4450;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.modal-form .form-input:focus,
+.modal-form .form-textarea:focus,
+.modal-form .form-select:focus {
+  border-color: #0078f2;
+  box-shadow: 0 0 0 3px rgba(0, 120, 242, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  background: #242933;
+}
+
+.modal-form label {
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 1rem;
+  }
+
+  .modal {
+    margin: 0;
+    max-width: none;
+  }
+
+  .modal-header {
+    padding: 1.5rem;
+  }
+
+  .modal-form {
+    padding: 1.5rem;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+
+  .modal-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-header {
+    padding: 1rem;
+  }
+
+  .modal-form {
+    padding: 1rem;
+  }
+}
+
+/* Merge Task Modal Styles */
+.merge-comparison-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  margin-bottom: 0;
+  padding: 1.5rem;
+}
+
+.merge-panel {
+  flex: 1;
+  margin: 0;
+  background: linear-gradient(135deg, #2a3441 0%, #242933 100%);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #3d4450;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.merge-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0078f2 0%, #f88c00 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.merge-panel:hover::before {
+  opacity: 1;
+}
+
+.merge-panel:hover {
+  border-color: #0078f2;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 120, 242, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.merge-panel.merged {
+  background: linear-gradient(135deg, #3d3520 0%, #2a2518 100%);
+  border: 2px solid #f88c00;
+  box-shadow: 0 8px 25px rgba(248, 140, 0, 0.3), 0 0 20px rgba(248, 140, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.merge-panel.merged::before {
+  background: linear-gradient(90deg, #f88c00 0%, #ffa502 100%);
+  opacity: 1;
+}
+
+.merge-field-label {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #a7b2c1;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+}
+
+.merge-field-value {
+  background: linear-gradient(135deg, #1a1f29 0%, #242933 100%);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  border: 2px solid #3d4450;
+  min-height: 48px;
+  word-break: break-word;
+  color: #ffffff;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.merge-field-value:hover {
+  border-color: #0078f2;
+  background: linear-gradient(135deg, #242933 0%, #2a3441 100%);
+  box-shadow: 0 0 0 3px rgba(0, 120, 242, 0.1), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.merge-copy-btn {
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  margin-left: 0.75rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #0078f2 0%, #005bb5 100%);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 120, 242, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.merge-copy-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.merge-copy-btn:hover::before {
+  left: 100%;
+}
+
+.merge-copy-btn:hover {
+  background: linear-gradient(135deg, #0086ff 0%, #0066cc 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 120, 242, 0.4);
+}
+
+.merge-input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #3d4450;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  background: #1a1f29;
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.merge-input::placeholder {
+  color: #6c7580;
+}
+
+.merge-input:focus {
+  outline: none;
+  border-color: #0078f2;
+  box-shadow: 0 0 0 3px rgba(0, 120, 242, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  background: #242933;
+}
+
+.merge-textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #3d4450;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  min-height: 80px;
+  resize: vertical;
+  background: #1a1f29;
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-family: inherit;
+}
+
+.merge-textarea::placeholder {
+  color: #6c7580;
+}
+
+.merge-textarea:focus {
+  outline: none;
+  border-color: #0078f2;
+  box-shadow: 0 0 0 3px rgba(0, 120, 242, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  background: #242933;
+}
+
+/* Mobile Responsiveness for Merge Modal */
+@media (max-width: 768px) {
+  .merge-comparison-row {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .merge-panel {
+    padding: 1.5rem;
+  }
+
+  .merge-field-value {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .merge-input,
+  .merge-textarea {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .merge-copy-btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.7rem;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .merge-comparison-row {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .merge-panel {
+    padding: 1rem;
+  }
+
+  .merge-field-label {
+    font-size: 0.75rem;
+  }
+
+  .merge-field-value {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    min-height: 40px;
+  }
+
+  .merge-input,
+  .merge-textarea {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .merge-textarea {
+    min-height: 60px;
+  }
+
+  .merge-copy-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
+    margin-left: 0.25rem;
+    margin-bottom: 0.75rem;
+  }
+}
