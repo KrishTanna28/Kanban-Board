@@ -12,7 +12,6 @@ const PRIORITY_COLORS = {
 
 const TaskCard = ({ task, onDragStart, onDelete, onSmartAssign, currentUser, token, onEditConflict, isEditing, onEditOpen, onEditClose }) => {
   const [isHovered, setIsHovered] = useState(false)
-  const [isExpanded, setIsExpanded] = useState(false)
   const lastUpdatedAt = useRef(task.updatedAt)
 
   const handleDragStart = (e) => {
@@ -22,10 +21,6 @@ const TaskCard = ({ task, onDragStart, onDelete, onSmartAssign, currentUser, tok
   const handleEditClick = () => {
     lastUpdatedAt.current = task.updatedAt 
     if (onEditOpen) onEditOpen()
-  }
-
-  const handleCardClick = () => {
-    setIsExpanded(!isExpanded)
   }
 
   const getPriorityColor = (priority) => {
@@ -39,12 +34,11 @@ const TaskCard = ({ task, onDragStart, onDelete, onSmartAssign, currentUser, tok
   return (
     <>
       <div
-        className={`task-card ${isExpanded ? 'expanded' : ''}`}
+        className="task-card"
         draggable
         onDragStart={handleDragStart}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        onClick={handleCardClick}
       >
         <div className="task-header">
           <h4 className="task-title">{task.title}</h4>
@@ -68,42 +62,22 @@ const TaskCard = ({ task, onDragStart, onDelete, onSmartAssign, currentUser, tok
           {task.createdAt && <div className="task-date">{formatDate(task.createdAt)}</div>}
         </div>
 
-        {/* Show actions on hover for desktop and when expanded for mobile */}
-        {(isHovered || isExpanded) && (
+        {/* Hover Actions */}
+        {isHovered && (
           <div className="task-actions">
-            <button 
-              className="action-btn edit-btn" 
-              onClick={(e) => {
-                e.stopPropagation();
-                handleEditClick();
-              }} 
-              title="Edit Task"
-            >
+            <button className="action-btn edit-btn" onClick={handleEditClick} title="Edit Task">
               ✏️
             </button>
-            <button 
-              className="action-btn smart-assign-btn" 
-              onClick={(e) => {
-                e.stopPropagation();
-                onSmartAssign(task._id);
-              }} 
-              title="Smart Assign"
-            >
+            <button className="action-btn smart-assign-btn" onClick={() => onSmartAssign(task._id)} title="Smart Assign">
               🎯
             </button>
-            <button 
-              className="action-btn delete-btn" 
-              onClick={(e) => {
-                e.stopPropagation();
-                onDelete(task._id);
-              }} 
-              title="Delete Task"
-            >
+            <button className="action-btn delete-btn" onClick={() => onDelete(task._id)} title="Delete Task">
               🗑️
             </button>
           </div>
         )}
       </div>
+      {/* EditTaskModal removed from here. Now rendered at BoardPage.js top level. */}
     </>
   )
 }
