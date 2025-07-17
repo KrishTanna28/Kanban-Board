@@ -18,9 +18,9 @@
   }
 
   .task-card.expanded {
-    transform: scale(1.05);
+    transform: scale(1.15);
     z-index: 100;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 120, 242, 0.3);
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 120, 242, 0.4);
   }
 
   .task-card .task-actions {
@@ -28,10 +28,10 @@
     opacity: 0;
     transform: translateY(10px);
     transition: all 0.3s ease;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.25rem;
   }
 
   .task-card.expanded .task-actions {
@@ -40,9 +40,9 @@
   }
 
   .task-card .action-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
   }
 }
 
