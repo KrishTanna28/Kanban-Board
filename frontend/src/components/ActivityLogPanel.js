@@ -121,19 +121,24 @@ const ActivityLogPanel = ({ token, onClose }) => {
                 </div>
                 <div className="log-content">
                   <div className="log-message">
-                  <strong>{log.user?.username || "Unknown User"}</strong> {(() => {
-                    if (log.action === "ASSIGN") {
-                      return <>assigned task <em>"{log.task?.title || "Unknown Task"}"</em> to <strong>{log.assignedTo?.username || "No one"}</strong></>;
-                    } else if (log.action === "STATUS_CHANGE") {
-                      return <>{log.message}</>;
-                    } else if(log.action === "CREATE"){  
-                      return <>created task <em>"{log.task?.title || "Unknown Task"}"</em>assigned to <strong>{log.assignedTo?.username || "No one"}</strong></>;
-                    } else if(log.action === "UPDATE"){
-                      return <>updated task <em>"{log.task?.title || "Unknown Task"}"</em></>;
-                    } else if(log.action === "DELETE"){
-                      return <>deleted <em>"{log.task?.title || "Unknown Task"}"</em></>
-                    }
-                  })()}
+                    <strong>{log.user?.username || "Unknown User"}</strong> {(() => {
+                      if (log.action === "ASSIGN") {
+                        return <>
+                          assigned task <em>"{log.task?.title || "Unknown Task"}"</em>
+                          {log.assignedTo?.username && (
+                            <> to <strong>{log.assignedTo.username}</strong></>
+                          )}
+                        </>
+                      } else if (log.action === "STATUS_CHANGE") {
+                        return <>{log.message}</>;
+                      } else if (log.action === "CREATE") {
+                        return <>created task <em>"{log.task?.title || "Unknown Task"}"</em> {log.assignedTo?.username && (<>assigned to <strong>{log.assignedTo.username}</strong></>)}</>;
+                      } else if (log.action === "UPDATE") {
+                        return <>updated task <em>"{log.task?.title || "Unknown Task"}"</em></>;
+                      } else if (log.action === "DELETE") {
+                        return <>deleted <em>"{log.task?.title || "Unknown Task"}"</em></>
+                      }
+                    })()}
                   </div>
                   <div className="log-timestamp">{formatTimestamp(log.createdAt || log.timestamp)}</div>
 
