@@ -14,7 +14,7 @@ Key Highlights:
 - Mobile-responsive design
 
 Live Demo:
-- **Application**: [Kanban Board App](https://kanban-board-fc6s.onrender.com)
+- **Application**: [Kanban Board App](https://kanban-board-two-lac.vercel.app/)
 - **Demo Video**: [Watch Demo](https://drive.google.com/file/d/1uljQvUm8tZpyvYipJn-H7T3jkZD8U_eg/view)
 
 ## Tech Stack
